@@ -22,12 +22,12 @@ public class Spawn : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(Vector3.up.normalized * speed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            transform.Translate(Vector3.down.normalized * speed * Time.deltaTime);
         }
     }
 }
