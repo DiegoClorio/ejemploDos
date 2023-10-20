@@ -6,10 +6,10 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
 
-    public Transform max;
-    public Transform min;
+    public float  max;
+    public float min;
 
-    private Vector3 spawnPos;
+    private float timer = 1;
     void Start()
     {
         
@@ -17,7 +17,14 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        spawnPos = new Vector3(max.position.x, Random.Range(min.position.y, max.position.y), 0);
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+        timer = timer - Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            float posY = Random.Range(min, max);
+            Instantiate(enemyPrefab, new Vector3(transform.position.x, posY, 0), Quaternion.identity);
+            timer = 1;
+        }
     }
 }
