@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PointsText : MonoBehaviour
+public class PuntosScript : MonoBehaviour
 {
-    public int puntos = 0;
-    TMP_Text textComponent;
+    private TMP_Text textComponent;
+    private int puntos = 0;
 
-    void Start()
+    private void Start()
     {
         textComponent = GetComponent<TMP_Text>();
     }
@@ -16,5 +16,10 @@ public class PointsText : MonoBehaviour
     void Update()
     {
         textComponent.text = "Puntos: " + puntos;
+    }
+
+    public void AddPoints(int value)
+    {
+        puntos = puntos + value;
     }
 }

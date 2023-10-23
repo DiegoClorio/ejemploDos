@@ -7,8 +7,6 @@ public class ParedDestructora : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         Destroy(collision.gameObject);
 
     }

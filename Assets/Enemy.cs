@@ -5,13 +5,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
-    PointsText pointsScript;
-    HPText hpScript;
+    private PuntosScript puntosScript;
 
     private void Start()
     {
-        pointsScript = FindObjectOfType<PointsText>();
-        hpScript = FindObjectOfType<HPText>();
+        puntosScript = FindObjectOfType<PuntosScript>();
     }
 
     private void Update()
@@ -21,22 +19,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Jugador")
-        {
-            hpScript.hp = hpScript.hp - 1;
 
-            if (hpScript.hp == 0)
-            {
-                Destroy(collision.gameObject);
-            }
-
-            Destroy(gameObject);
-        }
-        else
-        {
-            pointsScript.puntos = pointsScript.puntos + 1;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
+        puntosScript.AddPoints(1);
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
 }
